@@ -1,0 +1,202 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import TextInput from "./TextInput.astro";
+import TextArea from "./TextArea.astro";
+import Checkbox from "./Checkbox.astro";
+import ContactImage from "../images/ContactImage.jpg";
+---
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-form-content">
+        <h2 class="contact-heading">Napisz do nas</h2>
+        <form class="contact-form">
+          <div class="form-row">
+            <TextInput label="Imię" name="name" required />
+            <TextInput label="Nazwisko" name="surname" required />
+          </div>
+
+          <div class="form-row">
+            <TextInput
+              label="Adres e-mail"
+              name="email"
+              type="email"
+              required
+            />
+            <TextInput label="Numer telefonu" name="phone" type="tel" />
+          </div>
+
+          <TextArea label="Twoja wiadomość" name="message" rows={5} required />
+
+          <div class="checkbox-group">
+            <Checkbox
+              name="consent"
+              id="consent"
+              label="Zapoznałem się z regulaminem i wyrażam zgodę na przetwarzanie moich danych osobowych przez Sungroup.pl"
+              required
+            />
+          </div>
+
+          <div class="form-submit">
+            <Button text="Wyślij wiadomość" type="submit" variant="primary" />
+          </div>
+        </form>
+      </div>
+      <div class="contact-image">
+        <Image
+          src={ContactImage}
+          alt="Contact Us"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          width={600}
+          height={600}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    /* Box Model & Positioning */
+    padding: 4rem 0;
+    /* Visual Styles */
+    background-color: var(--white-color);
+  }
+
+  .contact-wrapper {
+    /* Box Model & Layout */
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-content {
+    /* Box Model & Layout */
+    flex: 1;
+    padding: 1.5rem;
+    /* Visual Styles */
+    border-radius: 8px;
+    background-color: var(--primary-color-50);
+  }
+
+  .contact-heading {
+    /* Box Model */
+    margin-bottom: 1.5rem;
+    /* Typography */
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    line-height: 42px;
+    font-weight: 600;
+    color: var(--gray-color-900);
+  }
+
+  .contact-form {
+    /* Box Model & Layout */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    /* Box Model & Layout */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .checkbox-group {
+    /* Box Model */
+    margin-top: -0.5rem;
+  }
+
+  .form-submit {
+    /* Box Model & Layout */
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .form-submit :global(button) {
+    width: 100%;
+  }
+
+  .contact-image {
+    /* Box Model & Layout */
+    margin: auto;
+    max-width: 100%;
+    height: auto;
+    display: none;
+  }
+
+  .contact-image img {
+    /* Box Model */
+    width: 100%;
+    height: auto;
+    /* Visual Styles */
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  @media (min-width: 640px) {
+    .contact-section {
+      padding: 5rem 2rem;
+    }
+
+    .contact-form-content {
+      padding: 2rem;
+    }
+
+    .form-row {
+      flex-direction: row;
+    }
+
+    .form-submit {
+      justify-content: flex-end;
+    }
+
+    .form-submit :global(button) {
+      width: auto;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .contact-image {
+      display: block;
+    }
+
+    .contact-form-content {
+      padding: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .contact-section {
+      padding: 6rem 0;
+    }
+
+    .contact-wrapper {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-form-content {
+      padding: 3rem;
+    }
+
+    .contact-heading {
+      margin-bottom: 2rem;
+    }
+
+    .form-row {
+      flex-direction: row;
+    }
+
+    .checkbox-group {
+      margin-top: -1.5rem;
+    }
+  }
+</style>

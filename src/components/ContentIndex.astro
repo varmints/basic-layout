@@ -1,0 +1,154 @@
+---
+import Button from "./Button.astro";
+
+export interface Props {
+  overline: string;
+  title: string;
+  text: string;
+  listItems?: string[];
+  buttonText: string;
+  imageSrc: ImageMetadata;
+  imageAlt: string;
+  imagePosition?: "left" | "right";
+}
+
+const {
+  overline,
+  title,
+  text,
+  buttonText,
+  imageSrc,
+  imageAlt,
+  imagePosition = "right",
+} = Astro.props;
+---
+
+<section class="content-section">
+  <div class="container">
+    <div
+      class:list={[
+        "content-wrapper",
+        imagePosition === "left" ? "image-left" : "",
+      ]}
+    >
+      <div class="text-content">
+        <p class="overline">{overline}</p>
+        <h2>{title}</h2>
+        <p>{text}</p>
+        <Button text={buttonText} variant="primary" />
+      </div>
+      <div class="image-content">
+        <img
+          src={imageSrc.src}
+          alt={imageAlt}
+          width="560"
+          height="560"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-section {
+    /* Box Model & Layout */
+    padding: 4rem 0;
+    /* Visual Styles */
+    background-color: var(--white-color);
+  }
+
+  .content-wrapper {
+    /* Box Model & Layout */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .content-section {
+      padding: 6rem 0;
+    }
+
+    .content-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .image-content {
+      order: 1;
+    }
+    .text-content {
+      order: 0;
+    }
+    .content-wrapper.image-left .image-content {
+      order: 0;
+    }
+    .content-wrapper.image-left .text-content {
+      order: 1;
+    }
+  }
+
+  .text-content {
+    /* Box Model & Layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .overline {
+    /* Box Model */
+    margin-bottom: -0.5rem;
+    /* Typography */
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-color-600);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    /* Typography */
+    font-family: "Poppins", sans-serif;
+    font-size: 36px;
+    line-height: 48px;
+    font-weight: 600;
+    color: var(--gray-color-900);
+    margin: 0;
+  }
+
+  p {
+    /* Box Model */
+    margin: 0;
+    /* Typography */
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--gray-color-900);
+  }
+
+  .icon-wrapper {
+    /* Box Model & Layout */
+    display: inline-flex;
+    /* Visual Styles */
+    color: var(--primary-color-600);
+  }
+
+  .icon-wrapper :global(svg) {
+    fill: currentColor;
+  }
+
+  .image-content img {
+    /* Box Model */
+    display: block;
+    max-width: 100%;
+    height: auto;
+    /* Visual Styles */
+    border-radius: 8px;
+  }
+
+  .text-content :global(.button) {
+    margin-top: 1rem;
+  }
+</style>

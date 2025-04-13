@@ -1,0 +1,384 @@
+---
+import Icon from "./Icon.astro";
+import AvatarPlaceholder from "../images/AvatarPlaceholder.png";
+---
+
+<div class="container">
+  <div class="line"></div>
+</div>
+<section class="testimonials-section">
+  <div class="container">
+    <div class="testimonials-header">
+      <p class="overline">Referencje</p>
+      <h2>Poznaj opinie naszych klientów</h2>
+    </div>
+    <div class="testimonial-slider" id="testimonial-slider">
+      <button class="nav-arrow prev" aria-label="Previous testimonial">
+        <Icon name="arrow-left" size={20} />
+      </button>
+      <div class="testimonial-wrapper">
+        <div class="testimonial-track">
+          <div class="testimonial-card">
+            <div class="quote-icon" aria-hidden="true">"</div>
+            <blockquote class="testimonial-text">
+              But I must explain to you how all this mistaken idea of denouncing
+              pleasure and praising pain was born and I will give you a complete
+              account of the system. But I must explain to you how all this
+              mistaken idea of denouncing pleasure and praising pain was born
+              and I will give you a complete account of the system.
+            </blockquote>
+            <div class="author-info">
+              <img
+                src={AvatarPlaceholder.src}
+                alt="Jan Kowalski"
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+                class="avatar"
+              />
+              <div class="author-details">
+                <p class="author-name">Jan Kowalski</p>
+                <p class="author-title">Firma Jana Kowalskiego</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon" aria-hidden="true">"</div>
+            <blockquote class="testimonial-text">
+              This is another testimonial to show the slider functionality.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              voluptatum.
+            </blockquote>
+            <div class="author-info">
+              <img
+                src={AvatarPlaceholder.src}
+                alt="Anna Nowak"
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+                class="avatar"
+              />
+              <div class="author-details">
+                <p class="author-name">Anna Nowak</p>
+                <p class="author-title">Projekt XYZ</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon" aria-hidden="true">"</div>
+            <blockquote class="testimonial-text">
+              A third testimonial to demonstrate the slider. Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </blockquote>
+            <div class="author-info">
+              <img
+                src={AvatarPlaceholder.src}
+                alt="Tomasz Wiśniewski"
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+                class="avatar"
+              />
+              <div class="author-details">
+                <p class="author-name">Tomasz Wiśniewski</p>
+                <p class="author-title">Company ABC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="nav-arrow next" aria-label="Next testimonial">
+        <Icon name="arrow-right" size={20} />
+      </button>
+    </div>
+    <div class="slider-dots"></div>
+  </div>
+</section>
+
+<style>
+  .line {
+    /* Box Model */
+    margin: 2rem 0;
+    /* Visual Styles */
+    border-top: 1px solid var(--gray-color-200);
+  }
+
+  .testimonials-section {
+    /* Box Model & Layout */
+    padding: 6rem 0;
+    text-align: center;
+    /* Visual Styles */
+    background-color: var(--white-color);
+  }
+
+  .testimonials-header {
+    /* Box Model */
+    margin-bottom: 2rem;
+  }
+
+  .testimonials-header .overline {
+    /* Box Model */
+    margin-bottom: 1rem;
+    /* Typography */
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-color-600);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .testimonials-header h2 {
+    /* Typography */
+    font-family: "Poppins", sans-serif;
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 600;
+    color: var(--gray-color-900);
+    margin: 0;
+  }
+
+  .testimonial-slider {
+    /* Box Model & Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .testimonial-wrapper {
+    /* Box Model */
+    width: 100%;
+    max-width: 800px;
+    margin: 0 1.5rem;
+    /* Visual Styles */
+    overflow: hidden;
+  }
+
+  .testimonial-track {
+    /* Box Model & Layout */
+    display: flex;
+    /* Transitions */
+    transition: transform 0.5s ease;
+  }
+
+  .testimonial-card {
+    /* Box Model & Layout */
+    min-width: 100%;
+    flex: 0 0 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quote-icon {
+    /* Typography */
+    font-size: 80px;
+    color: var(--primary-color-100);
+    line-height: 1;
+    font-family: "Popins", serif;
+    font-weight: 600;
+  }
+
+  .testimonial-text {
+    /* Box Model */
+    margin: 0 0 2rem;
+    max-width: 650px;
+    /* Typography */
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--gray-color-900);
+    quotes: none;
+  }
+
+  .author-info {
+    /* Box Model & Layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+
+  .avatar {
+    /* Box Model */
+    width: 56px;
+    height: 56px;
+    /* Visual Styles */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color-50);
+  }
+
+  .author-details {
+    text-align: center;
+  }
+
+  .author-name {
+    /* Box Model */
+    margin: 0 0 0.25rem 0;
+    /* Typography */
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    color: var(--gray-color-900);
+  }
+
+  .author-title {
+    /* Box Model */
+    margin: 0;
+    /* Typography */
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--gray-color-700);
+  }
+
+  .nav-arrow {
+    /* Box Model & Layout */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 2;
+    /* Visual Styles */
+    background: var(--white-color);
+    border: 1px solid var(--gray-color-200);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--gray-color-500);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Transitions */
+    transition: all 0.2s ease;
+  }
+
+  .nav-arrow:hover {
+    color: var(--primary-color-600);
+    border-color: var(--gray-color-300);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.07);
+  }
+
+  .nav-arrow :global(svg) {
+    display: block;
+  }
+
+  .slider-dots {
+    /* Box Model & Layout */
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .dot {
+    /* Box Model */
+    width: 8px;
+    height: 8px;
+    /* Visual Styles */
+    border-radius: 50%;
+    background-color: var(--gray-color-200);
+    cursor: pointer;
+    /* Transitions */
+    transition: background-color 0.3s ease;
+  }
+
+  .dot.active {
+    background-color: var(--primary-color-600);
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-slider {
+      gap: 0.5rem;
+    }
+
+    .testimonial-wrapper {
+      margin: 0 0.75rem;
+    }
+
+    .nav-arrow {
+      width: 36px;
+      height: 36px;
+    }
+
+    .testimonial-text {
+      font-size: 16px;
+    }
+
+    .header h2 {
+      font-size: 30px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.getElementById("testimonial-slider");
+    if (!slider) return;
+
+    const track = slider.querySelector(".testimonial-track") as HTMLElement;
+    const cards = Array.from(track.querySelectorAll(".testimonial-card"));
+    const prevButton = slider.querySelector(".nav-arrow.prev") as HTMLElement;
+    const nextButton = slider.querySelector(".nav-arrow.next") as HTMLElement;
+    const dotsContainer = document.querySelector(".slider-dots") as HTMLElement;
+
+    let currentIndex = 0;
+    const totalSlides = cards.length;
+
+    if (dotsContainer) {
+      cards.forEach((_, index) => {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (index === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    const dots = Array.from(dotsContainer?.querySelectorAll(".dot") || []);
+
+    function updateDots(index: number) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    }
+
+    function goToSlide(index: number) {
+      currentIndex = index;
+      updateSlider();
+    }
+
+    function updateSlider() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDots(currentIndex);
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlider();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    }
+
+    if (prevButton) prevButton.addEventListener("click", prevSlide);
+    if (nextButton) nextButton.addEventListener("click", nextSlide);
+
+    if (totalSlides <= 1) {
+      prevButton.style.display = "none";
+      nextButton.style.display = "none";
+      dotsContainer.style.display = "none";
+    }
+
+    updateSlider();
+  });
+</script>

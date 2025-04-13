@@ -1,0 +1,57 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import HeroIndex from "../components/HeroIndex.astro";
+import FeaturesIndex from "../components/FeaturesIndex.astro";
+import ContentIndex from "../components/ContentIndex.astro";
+import TestimonialsIndex from "../components/TestimonialsIndex.astro";
+import BlogIndex from "../components/BlogIndex.astro";
+import CtaIndex from "../components/CtaIndex.astro";
+import ContactIndex from "../components/ContactIndex.astro";
+
+import ContentImage1 from "../images/Content1.jpg";
+import ContentImage2 from "../images/Content2.jpg";
+import ContentImage3 from "../images/Content3.jpg";
+---
+
+<MainLayout title="Strona główna" currentPath="/">
+  <HeroIndex />
+  <FeaturesIndex />
+  <ContentIndex
+    overline="Overline"
+    title="Usługa oferowana przez firmę"
+    text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
+    buttonText="Skontaktuj się z nami"
+    imageSrc={ContentImage1}
+    imageAlt="Two people collaborating at a desk with a laptop"
+    listItems={[
+      "But I must explain to you how all this mistaken idea.",
+      "But I must explain to you how all this mistaken idea.",
+      "But I must explain to you how all this mistaken idea.",
+    ]}
+  />
+
+  <ContentIndex
+    overline="Overline"
+    title="Usługa oferowana przez firmę"
+    text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
+    buttonText="Skontaktuj się z nami"
+    imageSrc={ContentImage2}
+    imageAlt="Man and woman looking at a tablet device"
+    imagePosition="left"
+  />
+
+  <ContentIndex
+    overline="Overline"
+    title="Usługa oferowana przez firmę"
+    text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
+    buttonText="Skontaktuj się z nami"
+    imageSrc={ContentImage3}
+    imageAlt="Woman presenting to colleagues in a meeting room"
+    imagePosition="right"
+  />
+
+  <TestimonialsIndex />
+  <BlogIndex />
+  <CtaIndex />
+  <ContactIndex />
+</MainLayout>

@@ -1,0 +1,80 @@
+---
+import BlogCard from "./BlogCard.astro";
+import Button from "./Button.astro";
+import BlogImage1 from "../images/Blog1.jpg";
+import BlogImage2 from "../images/Blog2.jpg";
+import BlogImage3 from "../images/Blog3.jpg";
+---
+
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-header">
+      <h2>Blog</h2>
+      <Button href="#" variant="secondary" text="Zobacz więcej" />
+    </div>
+    <div class="blog-cards">
+      <BlogCard
+        category="Kategoria"
+        title="Intrygujący tytuł artykułu do przeczytania przez użytkownika"
+        description="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain."
+        date="13.12.2021"
+        imageUrl={BlogImage1}
+      />
+      <BlogCard
+        category="Kategoria"
+        title="Intrygujący tytuł artykułu do przeczytania przez użytkownika"
+        description="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain."
+        date="13.12.2021"
+        imageUrl={BlogImage2}
+      />
+      <BlogCard
+        category="Kategoria"
+        title="Intrygujący tytuł artykułu do przeczytania przez użytkownika"
+        description="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain."
+        date="13.12.2021"
+        imageUrl={BlogImage3}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-section {
+    /* Box Model */
+    padding-top: 5rem;
+    /* Visual Styles */
+    background-color: var(--gray-color-50);
+  }
+
+  .blog-header {
+    /* Box Model & Layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .blog-header h2 {
+    /* Typography */
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 600;
+  }
+
+  .blog-cards {
+    /* Box Model & Layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .blog-header {
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .blog-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

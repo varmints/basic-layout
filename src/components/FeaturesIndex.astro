@@ -1,0 +1,139 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<section class="features-section">
+  <div class="container">
+    <div class="header">
+      <p class="overline">Overline</p>
+      <h2>Nagłówek w kilku słowach</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="icon-wrapper">
+          <Icon name="check2" size={24} />
+        </div>
+        <div class="feature-content">
+          <h3>Nagłówek w kilku słowach</h3>
+          <p>
+            But I must explain to you how all this mistaken idea of denouncing
+            pleasure and praising pain was born.
+          </p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="icon-wrapper">
+          <Icon name="check2" size={24} />
+        </div>
+        <div class="feature-content">
+          <h3>Nagłówek w kilku słowach</h3>
+          <p>
+            But I must explain to you how all this mistaken idea of denouncing
+            pleasure and praising pain was born.
+          </p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="icon-wrapper">
+          <Icon name="check2" size={24} />
+        </div>
+        <div class="feature-content">
+          <h3>Nagłówek w kilku słowach</h3>
+          <p>
+            But I must explain to you how all this mistaken idea of denouncing
+            pleasure and praising pain was born.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-section {
+    /* Box Model & Layout */
+    padding: 6rem 0;
+    text-align: center;
+    /* Visual Styles */
+    background-color: var(--gray-color-50);
+  }
+
+  .header {
+    /* Box Model */
+    margin-bottom: 4rem;
+  }
+
+  .header .overline {
+    /* Box Model */
+    margin-bottom: 1rem;
+    /* Typography */
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-color-800);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .header h2 {
+    /* Box Model */
+    margin-bottom: 1rem;
+    /* Typography */
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 600;
+    color: var(--gray-color-900);
+  }
+
+  .features-grid {
+    /* Box Model & Layout */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    text-align: left;
+  }
+
+  .feature-item {
+    /* Box Model & Layout */
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .icon-wrapper {
+    /* Box Model */
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    /* Visual Styles */
+    background-color: var(--primary-color-100);
+    border-radius: 50%;
+    color: var(--primary-color-600);
+    display: inline-flex;
+  }
+
+  .icon-wrapper :global(svg) {
+    fill: currentColor;
+  }
+
+  .feature-item h3 {
+    /* Box Model */
+    display: flex;
+    margin-bottom: 0.5rem;
+    /* Typography */
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    color: var(--gray-color-900);
+  }
+
+  .feature-item p {
+    /* Box Model */
+    margin: 0;
+    /* Typography */
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--gray-color-600);
+    line-height: 1.6;
+  }
+</style>

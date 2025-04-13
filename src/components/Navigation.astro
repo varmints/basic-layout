@@ -1,0 +1,280 @@
+---
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<div class="container">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <button
+    id="open-sidebar-button"
+    aria-label="open sidebar"
+    aria-expanded="false"
+    aria-controls="navbar"
+  >
+    <Icon name="arrow-right" size={24} />
+  </button>
+
+  <nav id="navbar">
+    <ul>
+      <li>
+        <button id="close-sidebar-button" aria-label="close sidebar">
+          <Icon name="arrow-left" size={24} />
+        </button>
+      </li>
+      <li class="home-li">
+        <a
+          href="/"
+          class={currentPath === "/" ? "active-link" : ""}
+          aria-current={currentPath === "/" ? "page" : null}>SunGroup</a>
+      </li>
+      <li>
+        <a
+          href="/about"
+          class={currentPath === "/about" ? "active-link" : ""}
+          aria-current={currentPath === "/about" ? "page" : null}>O nas</a>
+      </li>
+      <li>
+        <a
+          href="/features"
+          class={currentPath === "/features" ? "active-link" : ""}
+          aria-current={currentPath === "/features" ? "page" : null}>Blog</a>
+      </li>
+      <li>
+        <a
+          href="/pricing"
+          class={currentPath === "/pricing" ? "active-link" : ""}
+          aria-current={currentPath === "/pricing" ? "page" : null}>Kontakt</a>
+      </li>
+      <li><Button text="Porozmwiajmy" variant="primary" size="large" /></li>
+    </ul>
+  </nav>
+  <div id="overlay" aria-hidden="true"></div>
+</div>
+
+<script>
+  import "wicg-inert";
+
+  const openButton = document.getElementById("open-sidebar-button");
+  const closeButton = document.getElementById("close-sidebar-button");
+  const navbar = document.getElementById("navbar");
+  const overlay = document.getElementById("overlay");
+
+  const media = window.matchMedia("(width < 700px)");
+
+  media.addEventListener("change", (e) => updateNavbar(e));
+
+  function updateNavbar(e: MediaQueryListEvent | MediaQueryList) {
+    const isMobile = e.matches;
+    if (isMobile) {
+      navbar?.setAttribute("inert", "");
+    } else {
+      navbar?.removeAttribute("inert");
+    }
+  }
+
+  function openSidebar() {
+    navbar?.classList.add("show");
+    openButton?.setAttribute("aria-expanded", "true");
+    navbar?.removeAttribute("inert");
+  }
+
+  function closeSidebar() {
+    navbar?.classList.remove("show");
+    openButton?.setAttribute("aria-expanded", "false");
+    navbar?.setAttribute("inert", "");
+  }
+
+  openButton?.addEventListener("click", openSidebar);
+  closeButton?.addEventListener("click", closeSidebar);
+  overlay?.addEventListener("click", closeSidebar);
+
+  const navLinks = document.querySelectorAll("nav a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (media.matches) {
+        closeSidebar();
+      }
+    });
+  });
+
+  updateNavbar(media);
+</script>
+
+<style>
+  nav {
+    /* Box Model & Layout */
+    padding: 1rem 0;
+    /* Visual Styles */
+    background-color: var(--white-color);
+  }
+
+  nav ul {
+    /* Box Model & Layout */
+    display: flex;
+    list-style: none;
+  }
+
+  nav .home-li {
+    margin-right: auto;
+  }
+
+  nav .home-li a {
+    /* Box Model */
+    margin-left: -2rem;
+    /* Typography */
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gray-color-900);
+  }
+
+  nav li {
+    display: flex;
+  }
+
+  nav a {
+    /* Box Model & Layout */
+    display: flex;
+    align-self: center;
+    padding: 1rem 2rem;
+    /* Typography */
+    text-decoration: none;
+    color: var(--gray-color-700);
+    /* Transitions */
+    transition: background-color 150ms ease;
+  }
+
+  nav a:hover {
+    color: var(--primary-color-700);
+  }
+
+  nav a.active-link {
+  }
+
+  nav a.accent-link {
+    color: var(--white-color);
+    background-color: var(--primary-color-600);
+  }
+
+  #open-sidebar-button {
+    /* Box Model & Layout */
+    display: none;
+    margin-left: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1em;
+    /* Visual Styles */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-color-700);
+  }
+
+  #close-sidebar-button {
+    /* Box Model & Layout */
+    display: none;
+    padding: 1em;
+    /* Visual Styles */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-color-700);
+  }
+
+  #overlay {
+    /* Positioning */
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    /* Visual Styles */
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+  }
+
+  .skip-link {
+    /* Positioning */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    /* Box Model & Layout */
+    padding: 12px 24px;
+    /* Typography */
+    font-weight: bold;
+    font-size: 16px;
+    /* Visual Styles */
+    opacity: 0;
+    pointer-events: none;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    /* Transitions */
+    transition: opacity 0.3s ease;
+  }
+
+  .skip-link:focus {
+    opacity: 1;
+    pointer-events: auto;
+    outline: 3px solid #ffffff;
+  }
+
+  @media screen and (max-width: 768px) {
+    #open-sidebar-button,
+    #close-sidebar-button {
+      display: block;
+    }
+
+    nav {
+      /* Positioning */
+      position: fixed;
+      top: 0;
+      right: -100%;
+      /* Box Model & Layout */
+      height: 100vh;
+      width: min(15em, 100%);
+      padding: 1rem;
+      z-index: 10;
+      /* Visual Styles */
+      border-left: 1px solid var(--hover-color);
+      /* Transitions */
+      transition: right 300ms ease-in-out;
+    }
+
+    nav.show {
+      right: 0;
+    }
+
+    nav.show ~ #overlay {
+      display: block;
+    }
+
+    nav ul {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    nav a {
+      width: 100%;
+      padding-left: 2rem;
+    }
+
+    nav a.active-link {
+      border-bottom: none;
+    }
+
+    nav .home-li {
+      margin-right: unset;
+    }
+
+    nav .home-li a {
+      margin-left: unset;
+    }
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+import "../styles/normalize.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  currentPath: string;
+}
+
+const { title, currentPath } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Add SVG sprite to the DOM -->
+    <div class="svg-sprite" aria-hidden="true">
+      <object type="image/svg+xml" data="/sprite.svg"></object>
+    </div>
+
+    <Navigation currentPath={currentPath} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@500;600&display=swap");
+
+  :root {
+    --gray-color-900: #242529;
+    --gray-color-800: #696c74;
+    --gray-color-700: #858993;
+    --gray-color-600: #9ba0ac;
+    --gray-color-500: #adb3c0;
+    --gray-color-300: #cfd3db;
+    --gray-color-200: #dee1e6;
+    --gray-color-100: #ecedf0;
+    --gray-color-50: #f9f9fa;
+    --primary-color-800: #3f69bf;
+    --primary-color-700: #5086f2;
+    --primary-color-600: #6e9eff;
+    --primary-color-500: #8db3ff;
+    --primary-color-200: #d2e1ff;
+    --primary-color-100: #e5eeff;
+    --primary-color-50: #f7f9ff;
+    --red-color-900: #c90d0d;
+    --green-color-900: #329f32;
+    --white-color: #ffffff;
+    --site-background-color: #ffffff;
+  }
+  * {
+    /* Box Model */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    /* Typography */
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: var(--text-color);
+    /* Behavior */
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* Box Model & Layout */
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Visual Styles */
+    background-color: var(--site-background-color);
+  }
+
+  main p {
+    margin-top: 0.35em;
+  }
+
+  .container {
+    /* Box Model & Layout */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .svg-sprite {
+    display: none;
+  }
+
+  .icon {
+    /* Box Model & Layout */
+    display: inline-block;
+    /* Visual Styles */
+    fill: currentColor;
+  }
+</style>

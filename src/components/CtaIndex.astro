@@ -1,0 +1,69 @@
+---
+import Button from "./Button.astro";
+---
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <p class="cta-overline">Overline</p>
+      <h2 class="cta-heading">Przekonujący nagłówek w CTA</h2>
+      <p class="cta-description">
+        But I must explain to you how all this mistaken idea of denouncing
+        pleasure and praising pain was born.
+      </p>
+      <Button href="#" text="Napisz do nas" variant="primary" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    /* Box Model & Layout */
+    padding: 6rem 0;
+    text-align: center;
+    /* Visual Styles */
+    background-color: var(--gray-color-50);
+    color: var(--white-color);
+  }
+
+  .cta-content {
+    /* Box Model & Layout */
+    padding: 6rem 1rem;
+    /* Visual Styles */
+    background-color: var(--gray-color-900);
+    border-radius: 8px;
+  }
+
+  .cta-overline {
+    /* Box Model */
+    margin-bottom: 1rem;
+    /* Typography */
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--white-color);
+  }
+
+  .cta-heading {
+    /* Box Model */
+    margin-bottom: 1.5rem;
+    /* Typography */
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 600;
+  }
+
+  .cta-description {
+    /* Box Model */
+    margin-bottom: 2rem;
+    /* Typography */
+    font-size: 16px;
+    color: var(--white-color);
+  }
+
+  @media screen and (min-width: 768px) {
+    .cta-content {
+      padding: 4rem 1rem;
+    }
+  }
+</style>

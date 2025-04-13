@@ -1,0 +1,145 @@
+---
+interface Props {
+  /**
+   * The text content of the button
+   */
+  text: string;
+
+  /**
+   * The type of the button - primary or secondary
+   * @default "primary"
+   */
+  variant?: "primary" | "secondary";
+
+  /**
+   * The size of the button - large or medium
+   * @default "large"
+   */
+  size?: "large" | "medium";
+
+  /**
+   * URL to navigate to when the button is clicked
+   * If not provided, the button will be a standard button element
+   */
+  href?: string;
+
+  /**
+   * Additional CSS classes to apply to the button
+   */
+  class?: string;
+
+  /**
+   * Type attribute for button element
+   * @default "button"
+   */
+  type?: "button" | "submit" | "reset";
+
+  /**
+   * Disabled state
+   * @default false
+   */
+  disabled?: boolean;
+}
+
+const {
+  text,
+  variant = "primary",
+  size = "large",
+  href,
+  class: className = "",
+  type = "button",
+  disabled = false,
+  ...rest
+} = Astro.props;
+
+// Determine which element to render
+const Element = href ? "a" : "button";
+
+// Attributes specific to element type
+const elementAttributes = href
+  ? { href: disabled ? null : href }
+  : { type, disabled };
+---
+
+<Element
+  class:list={[
+    "button",
+    `button--${variant}`,
+    `button--${size}`,
+    className,
+    disabled && "button--disabled",
+  ]}
+  {...elementAttributes}
+  {...rest}
+>
+  {text}
+</Element>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .button--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Primary Button Styles */
+  .button--primary {
+    background-color: var(--primary-color-600);
+    color: var(--white-color);
+  }
+
+  .button--primary:hover:not(.button--disabled) {
+    background-color: var(--primary-color-700);
+    box-shadow: 0 2px 8px rgba(80, 134, 242, 0.3);
+  }
+
+  .button--primary:active:not(.button--disabled) {
+    background-color: var(--primary-color-800);
+    transform: translateY(1px);
+  }
+
+  /* Secondary Button Styles */
+  .button--secondary {
+    background-color: transparent;
+    border: 2px solid var(--primary-color-600);
+    color: var(--primary-color-600);
+  }
+
+  .button--secondary:hover:not(.button--disabled) {
+    background-color: var(--primary-color-50);
+    border-color: var(--primary-color-700);
+    color: var(--primary-color-700);
+  }
+
+  .button--secondary:active:not(.button--disabled) {
+    background-color: var(--primary-color-100);
+    border-color: var(--primary-color-800);
+    color: var(--primary-color-800);
+    transform: translateY(1px);
+  }
+
+  /* Size Variants */
+  .button--large {
+    padding: 1rem 2rem;
+    font-size: 16px;
+    min-width: 160px;
+  }
+
+  .button--medium {
+    padding: 10px 24px;
+    font-size: 14px;
+    min-width: 120px;
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+
+export interface Props {
+  category: string;
+  title: string;
+  description: string;
+  date: string;
+  imageUrl: any;
+}
+
+const { category, title, description, date, imageUrl } = Astro.props;
+
+const [day, month, year] = date.split(".");
+const parsedDate = new Date(`${year}-${month}-${day}`);
+const formattedDate = parsedDate.toLocaleDateString("pl-PL", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<article class="blog-card">
+  <a href="#" class="blog-card__link">
+    <Image
+      src={imageUrl}
+      alt={title}
+      class="blog-card__image"
+      width={432}
+      height={320}
+      loading="lazy"
+    />
+    <div class="blog-card__content">
+      <p class="blog-card__category">{category}</p>
+      <h3 class="blog-card__title">{title}</h3>
+      <p class="blog-card__description">{description}</p>
+      <div class="blog-card__footer">
+        <Icon name="calendar" size={24} class="blog-card__icon" />
+        <time datetime={date}>{formattedDate}</time>
+      </div>
+    </div>
+  </a>
+</article>
+
+<style>
+  .blog-card {
+    /* Box Model & Layout */
+    display: flex;
+    flex-direction: column;
+    /* Visual Styles */
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .blog-card__link {
+    text-decoration: none;
+  }
+
+  .blog-card__image {
+    /* Box Model */
+    width: 100%;
+    height: auto;
+  }
+
+  .blog-card__content {
+    /* Box Model */
+    padding: 1.5rem 0;
+  }
+
+  .blog-card__category {
+    /* Box Model */
+    margin-bottom: 0.5rem;
+    /* Typography */
+    color: var(--primary-color-800);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .blog-card__title {
+    /* Box Model */
+    margin-bottom: 0.75rem;
+    /* Typography */
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 500;
+    color: var(--gray-color-900);
+  }
+
+  .blog-card__description {
+    /* Box Model */
+    margin-bottom: 1rem;
+    /* Typography */
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--gray-color-700);
+  }
+
+  .blog-card__footer {
+    /* Box Model & Layout */
+    display: flex;
+    align-items: center;
+    /* Typography */
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--gray-color-600);
+  }
+
+  time {
+    margin-left: 0.5rem;
+  }
+</style>

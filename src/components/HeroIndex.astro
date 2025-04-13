@@ -1,0 +1,93 @@
+---
+import Button from "./Button.astro";
+import { Image } from "astro:assets";
+import HeroImage from "../images/HeroImage.jpg";
+---
+
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Nagłówek traktujący o działalności firmy</h1>
+      <p>
+        But I must explain to you how all this mistaken idea of denouncing
+        pleasure and praising pain was born and I will give you a complete
+        account of the system.
+      </p>
+      <Button text="Dowiedz się więcej" variant="primary" size="large" />
+    </div>
+    <div class="hero-image">
+      <Image src={HeroImage} alt="Hero Image" class="hero-img" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    /* Box Model & Layout */
+    overflow: hidden;
+    /* Visual Styles */
+    background-color: var(--gray-color-900);
+    color: var(--white-color);
+  }
+
+  .container {
+    /* Box Model & Layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-content {
+    /* Box Model & Layout */
+    flex: 0 0 55%;
+    padding-right: 4rem;
+  }
+
+  .hero-content h1 {
+    /* Box Model */
+    margin-bottom: 2rem;
+    /* Typography */
+    font:
+      600 42px/64px "Poppins",
+      sans-serif;
+  }
+
+  .hero-content p {
+    /* Box Model */
+    margin-bottom: 2rem;
+    /* Typography */
+    font:
+      18px/30px "Inter",
+      sans-serif;
+  }
+
+  .hero-image {
+    /* Box Model & Layout */
+    display: flex;
+    flex: 0 0 50%;
+    overflow: visible;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero-content {
+      padding-right: 0;
+      margin-top: 3rem;
+      order: 0;
+    }
+
+    .hero-image {
+      order: 1;
+      margin: 3rem auto 0;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>
