@@ -1,6 +1,7 @@
 ---
 import Icon from "./Icon.astro";
 import AvatarPlaceholder from "../images/AvatarPlaceholder.png";
+import { Image } from "astro:assets";
 ---
 
 <div class="container">
@@ -28,8 +29,8 @@ import AvatarPlaceholder from "../images/AvatarPlaceholder.png";
               and I will give you a complete account of the system.
             </blockquote>
             <div class="author-info">
-              <img
-                src={AvatarPlaceholder.src}
+              <Image
+                src={AvatarPlaceholder}
                 alt="Jan Kowalski"
                 width="56"
                 height="56"
@@ -51,8 +52,8 @@ import AvatarPlaceholder from "../images/AvatarPlaceholder.png";
               voluptatum.
             </blockquote>
             <div class="author-info">
-              <img
-                src={AvatarPlaceholder.src}
+              <Image
+                src={AvatarPlaceholder}
                 alt="Anna Nowak"
                 width="56"
                 height="56"
@@ -74,8 +75,8 @@ import AvatarPlaceholder from "../images/AvatarPlaceholder.png";
               incididunt ut labore et dolore magna aliqua.
             </blockquote>
             <div class="author-info">
-              <img
-                src={AvatarPlaceholder.src}
+              <Image
+                src={AvatarPlaceholder}
                 alt="Tomasz Wiśniewski"
                 width="56"
                 height="56"
