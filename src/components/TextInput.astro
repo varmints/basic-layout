@@ -20,10 +20,11 @@ const {
   value = "",
   errorMessage = type === "email"
     ? "Wpisz poprawny adres email"
-    : "To pole jest wymagane",
+    : type === "tel"
+      ? "Wpisz poprawny numer telefonu"
+      : "To pole jest wymagane",
 } = Astro.props;
 
-const hasValue = value !== "";
 ---
 
 <div class="form-field">
@@ -39,7 +40,7 @@ const hasValue = value !== "";
     />
     <label for={id} class="input-label">{label}</label>
   </div>
-  {required && <div class="error-message">{errorMessage}</div>}
+  <div class="error-message">{errorMessage}</div>
 </div>
 
 <style>
@@ -60,11 +61,15 @@ const hasValue = value !== "";
     padding: 16px;
     font-size: 16px;
     color: var(--primary-color-900);
-    border: 1px solid var(--gray-color-300);
+    border: 1px solid var(--gray-color-100);
     border-radius: 4px;
     background-color: var(--white-color);
     transition: all 0.2s ease;
     outline: none;
+  }
+
+  .text-input:hover {
+    border-color: var(--gray-color-300);
   }
 
   .input-label {
@@ -73,7 +78,7 @@ const hasValue = value !== "";
     top: 50%;
     transform: translateY(-50%);
     font-size: 16px;
-    color: var(--gray-color-600);
+    color: var(--gray-color-700);
     pointer-events: none;
     transition: all 0.2s ease;
     padding: 0 4px;
@@ -81,7 +86,7 @@ const hasValue = value !== "";
 
   .text-input:focus,
   .text-input:not(:placeholder-shown) {
-    border-color: var(--primary-color-600);
+    border-color: var(--green-color-900);
     padding-top: 20px;
     padding-bottom: 12px;
   }
@@ -100,7 +105,7 @@ const hasValue = value !== "";
   }
 
   .text-input:focus {
-    border: 1px solid var(--primary-color-600);
+    border: 1px solid var(--primary-color-500);
     padding: 15px;
     padding-top: 19px;
     padding-bottom: 11px;
@@ -121,7 +126,8 @@ const hasValue = value !== "";
     display: none;
   }
 
-  .text-input:invalid:not(:focus):not(:placeholder-shown) ~ .error-message {
+  /* We'll let JavaScript control the display of error messages instead */
+  /* .text-input:invalid:not(:focus):not(:placeholder-shown) ~ .error-message {
     display: block;
-  }
+  } */
 </style>

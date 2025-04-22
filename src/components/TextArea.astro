@@ -21,7 +21,6 @@ const {
   errorMessage = "To pole jest wymagane",
 } = Astro.props;
 
-const hasValue = value !== "";
 ---
 
 <div class="form-field">
@@ -32,11 +31,11 @@ const hasValue = value !== "";
       class="text-area"
       placeholder=" "
       required={required}
-      rows={rows}>{value}</textarea
-    >
+      rows={rows}
+    >{value}</textarea>
     <label for={id} class="textarea-label">{label}</label>
   </div>
-  {required && <div class="error-message">{errorMessage}</div>}
+  <div class="error-message" style="color: var(--red-color-900);">{errorMessage}</div>
 </div>
 
 <style>
@@ -57,7 +56,7 @@ const hasValue = value !== "";
     padding: 16px;
     font-size: 16px;
     font-family: inherit;
-    border: 1px solid var(--gray-color-300);
+    border: 1px solid var(--gray-color-100);
     border-radius: 4px;
     background-color:  var(--white-color);
     transition: all 0.2s ease;
@@ -65,12 +64,16 @@ const hasValue = value !== "";
     resize: vertical;
   }
 
+  .text-area:hover {
+    border-color: var(--gray-color-300);
+  }
+
   .textarea-label {
     position: absolute;
     left: 16px;
     top: 16px;
     font-size: 16px;
-    color: var(--gray-color-600);
+    color: var(--gray-color-700);
     pointer-events: none;
     transition: all 0.2s ease;
     padding: 0 4px;
@@ -90,7 +93,7 @@ const hasValue = value !== "";
   }
 
   .text-area:focus {
-    border: 1px solid var(--primary-color-600);
+    border: 1px solid var(--primary-color-500);
     padding: 15px;
   }
 
@@ -99,21 +102,13 @@ const hasValue = value !== "";
   }
 
   .text-area:invalid:not(:focus):not(:placeholder-shown) {
-    border: 1px solid var(--red-color-600);
-  }
-
-  .text-area:invalid:not(:focus):not(:placeholder-shown) ~ .textarea-label {
-    color: var(--red-color-600);
+    border: 1px solid var(--red-color-900);
   }
 
   .error-message {
-    color: var(--red-color-600);
     font-size: 12px;
     margin-top: 4px;
     display: none;
   }
 
-  .text-area:invalid:not(:focus):not(:placeholder-shown) ~ .error-message {
-    display: block;
-  }
 </style>
