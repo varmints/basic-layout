@@ -16,42 +16,50 @@ import ContentImage3 from "../images/Content3.jpg";
 <MainLayout title="Strona główna" currentPath="/">
   <HeroIndex />
   <FeaturesIndex />
-  <ContentIndex
-    overline="Overline"
-    title="Usługa oferowana przez firmę"
-    text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
-    buttonText="Skontaktuj się z nami"
-    imageSrc={ContentImage1}
-    imageAlt="Two people collaborating at a desk with a laptop"
-    listItems={[
-      "But I must explain to you how all this mistaken idea.",
-      "But I must explain to you how all this mistaken idea.",
-      "But I must explain to you how all this mistaken idea.",
-    ]}
-  />
+  <div class="content-container">
+    <ContentIndex
+      overline="Overline"
+      title="Usługa oferowana przez firmę"
+      text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
+      buttonText="Skontaktuj się z nami"
+      imageSrc={ContentImage1}
+      imageAlt="Two people collaborating at a desk with a laptop"
+      listItems={[
+        "But I must explain to you how all this mistaken idea.",
+        "But I must explain to you how all this mistaken idea.",
+        "But I must explain to you how all this mistaken idea.",
+      ]}
+    />
 
-  <ContentIndex
-    overline="Overline"
-    title="Usługa oferowana przez firmę"
-    text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
-    buttonText="Skontaktuj się z nami"
-    imageSrc={ContentImage2}
-    imageAlt="Man and woman looking at a tablet device"
-    imagePosition="left"
-  />
+    <ContentIndex
+      overline="Overline"
+      title="Usługa oferowana przez firmę"
+      text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
+      buttonText="Skontaktuj się z nami"
+      imageSrc={ContentImage2}
+      imageAlt="Man and woman looking at a tablet device"
+      imagePosition="left"
+    />
 
-  <ContentIndex
-    overline="Overline"
-    title="Usługa oferowana przez firmę"
-    text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
-    buttonText="Skontaktuj się z nami"
-    imageSrc={ContentImage3}
-    imageAlt="Woman presenting to colleagues in a meeting room"
-    imagePosition="right"
-  />
-
+    <ContentIndex
+      overline="Overline"
+      title="Usługa oferowana przez firmę"
+      text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system."
+      buttonText="Skontaktuj się z nami"
+      imageSrc={ContentImage3}
+      imageAlt="Woman presenting to colleagues in a meeting room"
+      imagePosition="right"
+    />
+  </div>
   <TestimonialsIndex />
   <BlogIndex />
   <CtaIndex />
   <ContactIndex />
 </MainLayout>
+
+<style>
+  .content-container {
+    /* Box Model & Layout */
+    padding: 2rem 0;
+  }
+</style>

@@ -296,12 +296,17 @@ import { Image } from "astro:assets";
   }
 
   @media (max-width: 768px) {
+    .testimonials-section {
+      /* Box Model & Layout */
+      padding: 4rem 0;
+    }
+
     .testimonial-slider {
       gap: 0.5rem;
     }
 
     .testimonial-wrapper {
-      margin: 0 0.75rem;
+      margin: 0;
     }
 
     .nav-arrow {
